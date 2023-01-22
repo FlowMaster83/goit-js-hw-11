@@ -13,7 +13,6 @@ Notiflix.Notify.init({
 });
 
 let lightbox = new SimpleLightbox('.gallery a');
-
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 const loadMore = document.querySelector('.load-more');
@@ -34,7 +33,6 @@ async function onFormSubmit(event) {
   }
 
   loadMore.classList.add('hidden');
-
   gallery.innerHTML = '';
 
   try {
@@ -82,8 +80,7 @@ async function pixabayFetch(searchQuery, page = 1) {
 }
 
 function cardsRender(data) {
-  const markup = data.hits
-    .map(
+  const markup = data.hits.map(
       ({
         webformatURL,
         largeImageURL,
@@ -109,15 +106,13 @@ function cardsRender(data) {
     </p>
   </div>
 </div>`
-    )
-    .join('');
+    ).join('');
   gallery.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
 }
 
 async function onBtnClick() {
   page += 1;
-
   try {
     const data = await pixabayFetch(searchQuery, page);
 
